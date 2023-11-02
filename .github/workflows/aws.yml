@@ -36,7 +36,7 @@ jobs:
         username: ubuntu
         port: 22
         source: "*"
-        target: "/home/ubuntu/HRbuddy/HRbuddy-BE/"
+        target: "/home/ubuntu/nest/"
          
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@master
