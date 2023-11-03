@@ -24,7 +24,7 @@ export class AuthController {
   @Post()
   async create(@Body() createAuthDto: CreateUserDto, @Req() req: Request) {
     try {
-      return await this.authService.signup(createAuthDto, req['user'].id);
+      return await this.authService.signup(createAuthDto, 0);
     } catch (error) {
       console.log(error);
     }
