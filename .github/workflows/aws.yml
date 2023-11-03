@@ -49,5 +49,5 @@ jobs:
           cd
           cd test/
     - run: npm run build
-    - run: pm2 start ./dist/src/main.js
+    - run: pm2 start ./dist/src/main.js -f
         #proxy_port: 8000
