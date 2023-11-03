@@ -46,8 +46,7 @@ jobs:
         username: ubuntu
         port: 22
         script: |
-          cd
-          cd test/
-    - run: npm run build
-    - run: pm2 start ./dist/src/main.js -f
-        #proxy_port: 8000
+          cd /home/ubuntu/test/
+          npm install --production  # Install production dependencies
+          pm2 delete main || true  # Stop and remove the existing application
+          pm2 start ./dist/src/main.js --name nest  # Start the application with a specific name
