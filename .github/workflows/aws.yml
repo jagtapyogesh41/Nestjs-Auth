@@ -31,8 +31,8 @@ jobs:
     - name: copy file via ssh key
       uses: appleboy/scp-action@master
       with:
-        key: ${{ secrets.KEY }}
-        host: 13.127.94.77
+        key: ${{ secrets.TESR }}
+        host: 15.207.86.236
         username: ubuntu
         port: 22
         source: "*"
@@ -41,8 +41,8 @@ jobs:
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@master
       with:
-        key: ${{ secrets.KEY }}
-        host: 13.127.94.77
+        key: ${{ secrets.TEST }}
+        host: 15.207.86.236
         username: ubuntu
         port: 22
         script: |
