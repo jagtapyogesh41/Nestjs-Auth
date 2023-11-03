@@ -48,6 +48,6 @@ jobs:
         script: |
           cd
           cd test/
-          # npm install
-          sudo pm2 restart ./dist/src/main.js
+          npm run build
+          pm2 restart ./dist/src/main.js
         #proxy_port: 8000
