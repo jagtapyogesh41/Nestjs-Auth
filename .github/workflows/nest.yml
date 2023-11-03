@@ -1,0 +1,53 @@
+name: nest
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]  # Choose the Node.js version that you need
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build the Application
+      run: npm run build
+
+    - name: Copy Files via SSH
+      uses: appleboy/scp-action@v1
+      with:
+        key: ${{ secrets.TEST }}
+        host: 15.207.86.236
+        username: ubuntu
+        port: 22
+        source: "."  # Copy all files in the current directory
+        target: "/home/ubuntu/test/"
+
+    - name: SSH Remote Commands
+      uses: appleboy/ssh-action@v1
+      with:
+        key: ${{ secrets.TEST }}
+        host: 15.207.86.236
+        username: ubuntu
+        port: 22
+        script: |
+          cd /home/ubuntu/test/
+          npm install --production  # Install production dependencies
+          pm2 delete main || true  # Stop and remove the existing application
+          pm2 start ./dist/src/main.js --name nest  # Start the application with a specific name
+
