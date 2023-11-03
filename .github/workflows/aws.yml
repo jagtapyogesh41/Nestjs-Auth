@@ -35,7 +35,7 @@ jobs:
         host: 15.207.86.236
         username: ubuntu
         port: 22
-        source: "dist"
+        source: "*"
         target: "/home/ubuntu/test/"
          
     - name: SSH Remote Commands
@@ -49,5 +49,5 @@ jobs:
           cd
           cd test/
           # npm install
-          # npx pm2 restart index.js
+          npx pm2 restart ./dist/src/main.js
         #proxy_port: 8000
