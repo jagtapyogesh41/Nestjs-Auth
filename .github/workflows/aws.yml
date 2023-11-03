@@ -35,8 +35,8 @@ jobs:
         host: 15.207.86.236
         username: ubuntu
         port: 22
-        source: "*"
-        target: "/home/ubuntu/nest/"
+        source: "dist"
+        target: "/home/ubuntu/test/"
          
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@master
@@ -47,7 +47,7 @@ jobs:
         port: 22
         script: |
           cd
-          cd nest/
-          npm install
+          cd test/
+          # npm install
           # npx pm2 restart index.js
         #proxy_port: 8000
