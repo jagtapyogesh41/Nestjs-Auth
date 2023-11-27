@@ -58,7 +58,6 @@ jobs:
         port: 22
         script: |
           cd /home/ubuntu/test/
-          npm install  # Install production dependencies
           
           
     - name: SSH Remote Commands 2
