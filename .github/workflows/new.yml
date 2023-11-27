@@ -1,4 +1,4 @@
-name:  CI/CD
+name:  CI/CD 1
 
 on:
   push:
@@ -36,18 +36,18 @@ jobs:
         source: "*"
         target: "/home/ubuntu/test/"
          
-    - name: SSH Remote Commands
-      uses: appleboy/ssh-action@master
-      with:
-        key: ${{ secrets.TEST }}
-        host: 15.207.86.236
-        username: ubuntu
-        port: 22
-        script: |
-          cd /home/ubuntu/test/
-          npm install --production  # Install production dependencies
-          pm2 delete main || true  # Stop and remove the existing application
-          pm2 start ./dist/src/main.js --name nest  # Start the application with a specific name
+    # - name: SSH Remote Commands
+    #   uses: appleboy/ssh-action@master
+    #   with:
+    #     key: ${{ secrets.TEST }}
+    #     host: 15.207.86.236
+    #     username: ubuntu
+    #     port: 22
+    #     script: |
+    #       cd /home/ubuntu/test/
+    #       npm install --production  # Install production dependencies
+    #       pm2 delete main || true  # Stop and remove the existing application
+    #       pm2 start ./dist/src/main.js --name nest  # Start the application with a specific name
           
     - name: SSH Remote Commands 1
       uses: appleboy/ssh-action@master
