@@ -58,7 +58,7 @@ jobs:
         port: 22
         script: |
           cd /home/ubuntu/test/
-          npm install --production  # Install production dependencies
+          npm install  # Install production dependencies
           
           
     - name: SSH Remote Commands 2
@@ -70,7 +70,7 @@ jobs:
         port: 22
         script: |
           cd /home/ubuntu/test/
-          pm2 delete main || true  # Stop and remove the existing application
+          npx pm2 delete main || true  # Stop and remove the existing application
       
 
     - name: pm2
@@ -82,4 +82,4 @@ jobs:
         port: 22
         script: |
           cd /home/ubuntu/test/
-          pm2 start ./dist/src/main.js --name nest  # Start the application with a specific name
+          npx pm2 start ./dist/src/main.js --name nest  # Start the application with a specific name
